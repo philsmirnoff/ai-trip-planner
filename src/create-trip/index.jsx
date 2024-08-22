@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SelectBudgetOptions, SelectTravelesList } from "../constants/options";
+import { AI_PROMPT, SelectBudgetOptions, SelectTravelesList } from "../constants/options";
+import { chatSession } from '@/service/AIModal';
 import { toast } from 'sonner';
 
 const CreateTrip = () => {
@@ -17,12 +18,23 @@ const CreateTrip = () => {
     })
   }
 
-  const OnGenerateTrip = async () => {
+  const onGenerateTrip = async () => {
 
     if (formData?.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.traveler) {
       toast("Please Fill All Details 🙏")
       return;
     }
+
+    const FINAL_PROMPT = AI_PROMPT
+      .replace('{location}', formData?.location?.label)
+      .replace('{totalDays}', formData?.noOfDays)
+      .replace('{traveler}', formData?.traveler)
+      .replace('{budget}', formData?.budget)
+      .replace('{totalDays}', formData?.noOfDays)
+      console.log(FINAL_PROMPT)
+
+    const result = await chatSession.sendMessage(FINAL_PROMPT);
+    console.log(result?.response?.text())
   }
 
 
@@ -96,7 +108,7 @@ const CreateTrip = () => {
         </div>
       </div>
       <div className="my-10 justify-end flex">
-        <Button onClick={OnGenerateTrip}>Generate Travel Plan 🦾</Button>
+        <Button onClick={onGenerateTrip}>Generate Travel Plan 🦾</Button>
       </div>
     </div>
   );
