@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const CreateTrip = () => {
   const [place, setPlace] = useState("");
@@ -32,6 +33,11 @@ const CreateTrip = () => {
       [name]: value,
     });
   };
+
+  const login = useGoogleLogin({
+    onSuccess: (codeResp) => getUserProfile(codeResp),
+    onError: (error) => console.log(error)
+  })
 
   const onGenerateTrip = async () => {
     const user = localStorage.getItem("user");
@@ -64,6 +70,22 @@ const CreateTrip = () => {
     const result = await chatSession.sendMessage(FINAL_PROMPT);
     console.log(result?.response?.text());
   };
+
+
+
+  const getUserProfile = (tokenInfo) => {
+    axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?acess_token=${tokenInfo?.access_token}`, {
+      headers: {
+        Authorization: `Bearer ${tokenInfo?.access_token}`,
+        Accept: 'Application/json'
+      }
+    }).then((res) => {
+      console.log(res);
+      localStorage.setItem('user', JSON.stringify(res.data));
+      setOpenDialog(false);
+      onGenerateTrip();
+    })
+  }
 
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
@@ -154,7 +176,7 @@ const CreateTrip = () => {
               <h2 className="font-bold text-lg mt-7">Sign In With Google</h2>
               <p>Sign in to the App with Google authentication securely</p>
 
-              <Button className="w-full mt-5 flex gap-4 items-center">
+              <Button onClick={login} className="w-full mt-5 flex gap-4 items-center">
                 <FcGoogle className="h-7 w-7" />
                 Sign In With Google
               </Button>
