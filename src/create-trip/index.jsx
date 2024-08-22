@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,23 @@ import { SelectBudgetOptions, SelectTravelesList } from "../constants/options";
 
 const CreateTrip = () => {
   const [place, setPlace] = useState("");
+  const [formData, setFormData] = useState([]);
+
+  const handleInputChange = (name, value) => {
+     setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  const OnGenerateTrip = async () => {
+
+   if (formData?.noOfDays > 5) {
+    return;
+   }
+  }
+
+
 
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
@@ -25,7 +42,7 @@ const CreateTrip = () => {
             selectProps={{
               place,
               onChange: (v) => {
-                setPlace(v);
+                setPlace(v); handleInputChange('location', v)
               },
             }}
           />
@@ -34,7 +51,7 @@ const CreateTrip = () => {
           <h2 className="text-xl my-3 font-medium">
             How many days are you planning your trip? 🗓️
           </h2>
-          <Input placeholder={"Ex.3"} type="number" />
+          <Input placeholder={"Ex.3"} type="number" onChange={(e) => handleInputChange('noOfDays', e.target.value)} />
         </div>
       </div>
       <div>
@@ -44,8 +61,9 @@ const CreateTrip = () => {
             <div
               key={index}
               className={`p-4 border cursor-pointer
-              rounded-lg hover:shadow-lg
+              rounded-lg hover:shadow-lg ${formData?.budget == item.title && 'shadow-lg border-black'}
               `}
+              onClick={() => handleInputChange('budget', item.title)}
             >
               <h2 className="text-4xl">{item.icon}</h2>
               <h2 className="font-bold text-lg">{item.title}</h2>
@@ -64,8 +82,9 @@ const CreateTrip = () => {
             <div
               key={index}
               className={`p-4 border cursor-pointer rounded-lg
-               hover:shadow-lg
+               hover:shadow-lg ${formData?.traveler == item.people && 'shadow-lg border-black'}
                `}
+               onClick={() => handleInputChange('traveler', item.people)}
             >
               <h2 className="text-4xl">{item.icon}</h2>
               <h2 className="font-bold text-lg">{item.title}</h2>
@@ -75,7 +94,7 @@ const CreateTrip = () => {
         </div>
       </div>
       <div className="my-10 justify-end flex">
-        <Button>Generate Travel Plan 🤖</Button>
+        <Button onClick={OnGenerateTrip}>Generate Travel Plan 🦾</Button>
       </div>
     </div>
   );
