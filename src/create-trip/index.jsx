@@ -3,41 +3,67 @@ import React, { useState, useEffect } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { AI_PROMPT, SelectBudgetOptions, SelectTravelesList } from "../constants/options";
-import { chatSession } from '@/service/AIModal';
-import { toast } from 'sonner';
+import {
+  AI_PROMPT,
+  SelectBudgetOptions,
+  SelectTravelesList,
+} from "../constants/options";
+import { chatSession } from "@/service/AIModal";
+import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { FcGoogle } from "react-icons/fc";
+import { useGoogleLogin } from "@react-oauth/google";
 
 const CreateTrip = () => {
   const [place, setPlace] = useState("");
   const [formData, setFormData] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleInputChange = (name, value) => {
-     setFormData({
+    setFormData({
       ...formData,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
 
   const onGenerateTrip = async () => {
+    const user = localStorage.getItem("user");
 
-    if (formData?.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.traveler) {
-      toast("Please Fill All Details 🙏")
+    if (!user) {
+      setOpenDialog(true);
+      toast("Please Login First 🙏");
       return;
     }
 
-    const FINAL_PROMPT = AI_PROMPT
-      .replace('{location}', formData?.location?.label)
-      .replace('{totalDays}', formData?.noOfDays)
-      .replace('{traveler}', formData?.traveler)
-      .replace('{budget}', formData?.budget)
-      .replace('{totalDays}', formData?.noOfDays)
-      console.log(FINAL_PROMPT)
+    if (
+      (formData?.noOfDays > 5 && !formData?.location) ||
+      !formData?.budget ||
+      !formData?.traveler
+    ) {
+      toast("Please Fill All Details 🙏");
+      return;
+    }
+
+    const FINAL_PROMPT = AI_PROMPT.replace(
+      "{location}",
+      formData?.location?.label
+    )
+      .replace("{totalDays}", formData?.noOfDays)
+      .replace("{traveler}", formData?.traveler)
+      .replace("{budget}", formData?.budget)
+      .replace("{totalDays}", formData?.noOfDays);
+    console.log(FINAL_PROMPT);
 
     const result = await chatSession.sendMessage(FINAL_PROMPT);
-    console.log(result?.response?.text())
-  }
-
-
+    console.log(result?.response?.text());
+  };
 
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
@@ -56,7 +82,8 @@ const CreateTrip = () => {
             selectProps={{
               place,
               onChange: (v) => {
-                setPlace(v); handleInputChange('location', v)
+                setPlace(v);
+                handleInputChange("location", v);
               },
             }}
           />
@@ -65,7 +92,11 @@ const CreateTrip = () => {
           <h2 className="text-xl my-3 font-medium">
             How many days are you planning your trip? 🗓️
           </h2>
-          <Input placeholder={"Ex.3"} type="number" onChange={(e) => handleInputChange('noOfDays', e.target.value)} />
+          <Input
+            placeholder={"Ex.3"}
+            type="number"
+            onChange={(e) => handleInputChange("noOfDays", e.target.value)}
+          />
         </div>
       </div>
       <div>
@@ -75,9 +106,11 @@ const CreateTrip = () => {
             <div
               key={index}
               className={`p-4 border cursor-pointer
-              rounded-lg hover:shadow-lg ${formData?.budget == item.title && 'shadow-lg border-black'}
+              rounded-lg hover:shadow-lg ${
+                formData?.budget == item.title && "shadow-lg border-black"
+              }
               `}
-              onClick={() => handleInputChange('budget', item.title)}
+              onClick={() => handleInputChange("budget", item.title)}
             >
               <h2 className="text-4xl">{item.icon}</h2>
               <h2 className="font-bold text-lg">{item.title}</h2>
@@ -96,9 +129,11 @@ const CreateTrip = () => {
             <div
               key={index}
               className={`p-4 border cursor-pointer rounded-lg
-               hover:shadow-lg ${formData?.traveler == item.people && 'shadow-lg border-black'}
+               hover:shadow-lg ${
+                 formData?.traveler == item.people && "shadow-lg border-black"
+               }
                `}
-               onClick={() => handleInputChange('traveler', item.people)}
+              onClick={() => handleInputChange("traveler", item.people)}
             >
               <h2 className="text-4xl">{item.icon}</h2>
               <h2 className="font-bold text-lg">{item.title}</h2>
@@ -110,6 +145,23 @@ const CreateTrip = () => {
       <div className="my-10 justify-end flex">
         <Button onClick={onGenerateTrip}>Generate Travel Plan 🦾</Button>
       </div>
+
+      <Dialog open={openDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogDescription>
+              <img src="/logo.svg" />
+              <h2 className="font-bold text-lg mt-7">Sign In With Google</h2>
+              <p>Sign in to the App with Google authentication securely</p>
+
+              <Button className="w-full mt-5 flex gap-4 items-center">
+                <FcGoogle className="h-7 w-7" />
+                Sign In With Google
+              </Button>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
