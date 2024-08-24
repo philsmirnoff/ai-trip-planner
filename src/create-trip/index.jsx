@@ -24,7 +24,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "@/service/FirebaseConfig";
+import { db } from "@/service/firebaseConfig";
 
 const CreateTrip = () => {
   const [place, setPlace] = useState("");
@@ -94,6 +94,7 @@ const CreateTrip = () => {
       id: docId,
     });
     setLoading(false);
+    navigate(`/view-trip/${docId}`);
   };
 
   const getUserProfile = (tokenInfo) => {
