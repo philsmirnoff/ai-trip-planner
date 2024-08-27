@@ -17,15 +17,13 @@ const InfoSection = ({ trip }) => {
           </h2>
           <div className=" hidden sm:flex gap-5">
             <h2 className="p-1 px-3 bg-gray-200 rounded-full text-gray-500">
-              📅 {trip.userSelection?.noOfDays} Day
+              📅  {trip.userSelection?.noOfDays} Day
             </h2>
             <h2 className="p-1 px-3 bg-gray-200 rounded-full text-gray-500">
-              💰 {trip.userSelection?.budget}
-              Budget
+              💰 {trip.userSelection?.budget}  Budget
             </h2>
             <h2 className="p-1 px-3 bg-gray-200 rounded-full text-gray-500">
-              🥂 No. Of Traveler:
-              {trip.userSelection?.traveler}
+              🥂 No. Of Traveler: {trip.userSelection?.traveler}
             </h2>
           </div>
         </div>

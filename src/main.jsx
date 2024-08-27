@@ -22,7 +22,7 @@ const router=createBrowserRouter(
     {
       path: '/view-trip/:tripId',
       element: <ViewTrip />,
-    }
+    },
   ]
 )
 
