@@ -15,7 +15,7 @@ const InfoSection = ({ trip }) => {
       textQuery: trip?.userSelection?.location?.label,
     };
 
-    const result = await getPlaceDetails(data).then((res) => {
+    await getPlaceDetails(data).then((res) => {
       console.log(res.data.places[0].photos[3].name);
 
       const photoUrl = PHOTO_REF_URL.replace(
@@ -29,11 +29,10 @@ const InfoSection = ({ trip }) => {
   return (
     <div>
       <img
-        src={photoUrl?photoUrl:'/placeholder.jpg'}
-        className="h-[440px] w-full object-cover rounded-xl"
+        src={photoUrl ? photoUrl : "/placeholder.jpg"}
+        className="h-[340px] w-full object-cover rounded-xl"
       />
-
-      <div className="flex justify-between items-center">
+       <div className="flex justify-between items-center">
         <div className=" my-5 flex flex-col gap-2">
           <h2 className="font-bold text-2xl">
             {trip?.userSelection?.location?.label}

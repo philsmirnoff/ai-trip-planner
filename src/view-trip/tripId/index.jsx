@@ -34,7 +34,7 @@ const ViewTrip = () => {
   };
 
   return (
-    <div className="p-10 md:px-20 lg:px-44 xl:px-56">Information Section
+    <div className="p-10 md:px-20 lg:px-44 xl:px-56">
     <InfoSection trip={trip} />
     <Hotels trip={trip} />
     <PlacesToVisit trip={trip} />

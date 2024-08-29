@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
 import PlaceCardItem from './PlaceCardItem'
 
 const PlacesToVisit = ({trip}) => {
@@ -8,12 +7,12 @@ const PlacesToVisit = ({trip}) => {
         <h2 className='font-bold text-lg'>Places to Visit</h2>
 
         <div>
-            {trip.tripData?.itinerary.map((item,index)=>(
+            {trip.tripData?.itinerary.map((item)=>(
                 <div className='mt-5' key={item.day}>
                     <h2 className='font-medium text-lg'>{item.day}</h2>
                     <div className='grid md:grid-cols-2 gap-5'>
-                    {item.plan.map((place)=>(
-                            <div className=''>
+                    {item.plan.map((place, placeIndex)=>(
+                            <div className='' key={placeIndex}>
                                 <h2 className='font-medium text-sm text-orange-600'>{place.time}</h2>
                                 <PlaceCardItem place={place} />
                             </div>
