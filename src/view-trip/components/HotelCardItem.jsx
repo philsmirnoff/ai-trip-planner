@@ -6,24 +6,41 @@ import { Link } from "react-router-dom";
 
 const HotelCardItem = ({ hotel }) => {
   const [photoUrl, setPhotoUrl] = useState();
+
   useEffect(() => {
     hotel && getPlacePhoto();
   }, [hotel]);
 
   const getPlacePhoto = async () => {
-    const data = {
-      textQuery: hotel?.hotelName,
-    };
-    const result = await getPlaceDetails(data).then((res) => {
-      console.log(res.data.places[0].photos[3].name);
-
+    try {
+      const data = {
+        textQuery: hotel?.hotelName,
+      };
+      const res = await getPlaceDetails(data);
       const photoUrl = PHOTO_REF_URL.replace(
         "{NAME}",
         res.data.places[0].photos[3].name
       );
       setPhotoUrl(photoUrl);
-    });
+    } catch (error) {
+      console.error('Failed to fetch hotel photo:', error);
+      setPhotoUrl('/placeholder.jpg');
+    }
   };
+  // const getPlacePhoto = async () => {
+  //   const data = {
+  //     textQuery: hotel?.hotelName,
+  //   };
+  //   const result = await getPlaceDetails(data).then((res) => {
+  //     console.log(res.data.places[0].photos[3].name);
+
+  //     const photoUrl = PHOTO_REF_URL.replace(
+  //       "{NAME}",
+  //       res.data.places[0].photos[3].name
+  //     );
+  //     setPhotoUrl(photoUrl);
+  //   });
+  // };
   return (
     <Link
       to={
@@ -38,6 +55,7 @@ const HotelCardItem = ({ hotel }) => {
         <img
           src={photoUrl ? photoUrl : "/placeholder.jpg"}
           className="rounded-xl h-[180px] w-full object-cover"
+          alt={hotel?.hotelName || "Hotel Image"}
         />
         <div className="my-2 flex flex-col gap-2">
           <h2 className="font-medium ">{hotel?.hotelName}</h2>

@@ -6,33 +6,35 @@ import { useEffect, useState } from "react";
 
 const InfoSection = ({ trip }) => {
   const [photoUrl, setPhotoUrl] = useState();
+
   useEffect(() => {
     trip && getPlacePhoto();
   }, [trip]);
 
   const getPlacePhoto = async () => {
-    const data = {
-      textQuery: trip?.userSelection?.location?.label,
-    };
-
-    await getPlaceDetails(data).then((res) => {
-      console.log(res.data.places[0].photos[3].name);
-
+    try {
+      const data = {
+        textQuery: trip?.userSelection?.location?.label,
+      };
+      const res = await getPlaceDetails(data);
       const photoUrl = PHOTO_REF_URL.replace(
         "{NAME}",
         res.data.places[0].photos[3].name
       );
       setPhotoUrl(photoUrl);
-    });
+    } catch (error) {
+      console.error('Failed to fetch place photo:', error);
+      setPhotoUrl('/placeholder.jpg');
+    }
   };
 
   return (
     <div>
       <img
-        src={photoUrl ? photoUrl : "/placeholder.jpg"}
+        src={photoUrl}
         className="h-[340px] w-full object-cover rounded-xl"
       />
-       <div className="flex justify-between items-center">
+     <div className="flex justify-between items-center">
         <div className=" my-5 flex flex-col gap-2">
           <h2 className="font-bold text-2xl">
             {trip?.userSelection?.location?.label}
