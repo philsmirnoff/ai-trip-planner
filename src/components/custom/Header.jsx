@@ -59,7 +59,7 @@ const Header = () => {
   return (
     <div className="w-full p-3 shadow-sm flex justify-between items-center px-5">
       <a href="/">
-        <img src="/logo.svg" />
+        <h1 className="text-2xl font-bold text-[#f56551]"> BON VOYAGE ✈️</h1>
       </a>
       <div>
         {user ? (

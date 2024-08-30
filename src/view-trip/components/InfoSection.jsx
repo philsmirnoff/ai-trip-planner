@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button } from "@/components/ui/button";
 import { getPlaceDetails, PHOTO_REF_URL } from "@/service/GlobalApi";
-import { IoIosSend } from "react-icons/io";
 import { useEffect, useState } from "react";
 
 const InfoSection = ({ trip }) => {
@@ -51,9 +49,6 @@ const InfoSection = ({ trip }) => {
             </h2>
           </div>
         </div>
-        <Button>
-          <IoIosSend />
-        </Button>
       </div>
     </div>
   );
