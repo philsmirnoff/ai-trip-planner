@@ -101,11 +101,10 @@ const Header = () => {
         <DialogContent>
           <DialogHeader>
             <DialogDescription>
-              <img src="/logo.svg" />
-              <h2 className="font-bold text-lg mt-7">Sign In With Google</h2>
+            <h1 className="text-2xl font-bold text-[#f56551]">BON VOYAGE ✈️</h1>
+              <h2 className="font-bold text-lg mt-5">Sign In With Google</h2>
               <p>Sign in to the App with Google authentication securely</p>
-
-              <Button
+                <Button
                 onClick={login}
                 className="w-full mt-5 flex gap-4 items-center"
               >
