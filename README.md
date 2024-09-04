@@ -1,8 +1,5 @@
-# React + Vite
+# Bon Voyage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bon Voyage is an Gemini AI powered application that generates detailed trip plan for you based of destination, budget and amount of people you are traveling with
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Click here for the live site](https://bonvoyage-ai-trip-planner.vercel.app)
