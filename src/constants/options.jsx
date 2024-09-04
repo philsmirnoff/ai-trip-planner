@@ -8,7 +8,7 @@ export const SelectTravelesList=[
   },
   {
       id:2,
-      title:'A Couple',
+      title:'Couple',
       desc:'Two traveles in tandem',
       icon:'🥂',
       people:'2 People'
@@ -39,7 +39,7 @@ export const SelectBudgetOptions=[
   },
   {
       id:2,
-      title:'Moderate',
+      title:'Modest',
       desc:'Keep cost on the average side',
       icon:'💰',
   },
