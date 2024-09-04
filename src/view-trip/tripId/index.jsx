@@ -10,7 +10,6 @@ import Footer from "../components/Footer";
 
 const ViewTrip = () => {
   const { tripId } = useParams();
-  // eslint-disable-next-line no-unused-vars
   const [trip, setTrip] = useState([]);
 
   useEffect(() => {

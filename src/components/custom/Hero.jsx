@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <div className='flex flex-col items-center mx-56 gap-9'>
+    <div className='flex flex-col items-center mx-43 gap-9 px-2'>
       <h1 className='font-extrabold text-[60px] text-center'>
       <span className='text-[#f56551]'>Discover Your Next Adventure with AI:</span>
       <br />
@@ -18,3 +18,5 @@ const Hero = () => {
 }
 
 export default Hero
+
+// mx-56
