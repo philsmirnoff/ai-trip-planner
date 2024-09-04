@@ -27,20 +27,7 @@ const HotelCardItem = ({ hotel }) => {
       setPhotoUrl('/placeholder.jpg');
     }
   };
-  // const getPlacePhoto = async () => {
-  //   const data = {
-  //     textQuery: hotel?.hotelName,
-  //   };
-  //   const result = await getPlaceDetails(data).then((res) => {
-  //     console.log(res.data.places[0].photos[3].name);
 
-  //     const photoUrl = PHOTO_REF_URL.replace(
-  //       "{NAME}",
-  //       res.data.places[0].photos[3].name
-  //     );
-  //     setPhotoUrl(photoUrl);
-  //   });
-  // };
   return (
     <Link
       to={
