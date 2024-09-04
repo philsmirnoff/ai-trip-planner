@@ -45,6 +45,7 @@ const Header = () => {
       localStorage.setItem("user", JSON.stringify(data));
       setUser(data);
       setOpenDialog(false);
+      console.log("User Profile:", data);
     } catch (error) {
       console.error("Failed to fetch user profile:", error);
     }
