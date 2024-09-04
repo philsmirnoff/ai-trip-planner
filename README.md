@@ -10,13 +10,13 @@ Bon Voyage is a Gemini AI powered application that generates detailed trip plan 
 
 
 ## Technologies
-- JavaScript
-- React
-- Tailwind CSS
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - [Shadcn UI](https://ui.shadcn.com/)
-- Google Places API
-- Gemini Api
-- Firebase
+- [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
+- [Gemini AI API](https://ai.google.dev/gemini-api)
+- [Firebase](https://firebase.google.com/)
 
 
 
