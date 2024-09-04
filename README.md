@@ -5,7 +5,8 @@ Bon Voyage is a Gemini AI powered application that generates detailed trip plan 
 [Click here for the live site](https://bonvoyage-ai-trip-planner.vercel.app)
 
 
-![create-trip-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2bd48f59-a410-4cc6-a624-7436ef40222f)
+  ![trip-overview-ezgif com-speed (1)](https://github.com/user-attachments/assets/4e50a05d-75fd-430e-8bef-91044f41ec30)
+
 
 
 ## Technologies
@@ -16,3 +17,6 @@ Bon Voyage is a Gemini AI powered application that generates detailed trip plan 
 - Google Places API
 - Gemini Api
 - Firebase
+
+
+
