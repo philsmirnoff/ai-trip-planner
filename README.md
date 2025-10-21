@@ -1,22 +1,31 @@
 # 🌍 Bon Voyage
 
-Bon Voyage is a modern, intelligent travel planning application that uses Gemini AI to generate personalized itineraries based on your preferences, budget, and travel style. 
+Bon Voyage is a modern, intelligent travel planning application that uses Gemini AI to generate personalized itineraries based on your preferences, budget, and travel style. Built with React, Firebase, and Google's Gemini AI.
+
+![AI Trip Planner](https://img.shields.io/badge/AI-Powered-blue) ![React](https://img.shields.io/badge/React-18.3.1-blue) ![Firebase](https://img.shields.io/badge/Firebase-10.13.0-orange) ![Vite](https://img.shields.io/badge/Vite-5.3.4-purple)
 
 [Click here for the live site](https://bonvoyage-ai-trip-planner.vercel.app)
 
 
   ![trip-overview-ezgif com-speed (1)](https://github.com/user-attachments/assets/4e50a05d-75fd-430e-8bef-91044f41ec30)
 
+## 🛠️ Technologies Used
+
+### Frontend
+- **React 18.3.1** - Modern React with hooks and functional components
+- **React Router DOM 6.26.1** - Client-side routing
+- **Tailwind CSS 3.4.7** - Utility-first CSS framework
+- **Shadcn UI** - Accessible, unstyled UI components
+- **Lucide React 0.424.0** - Beautiful icon library
+
+### Backend & Services
+- **Firebase 10.13.0** - Backend-as-a-Service for data storage
+- **Firestore** - NoSQL database for trip storage
+- **Google Gemini AI** - AI model for trip generation
+- **Google Places API** - Location search and autocomplete
+- **Google OAuth** - User authentication
 
 
-## 🤖 Technologies
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [React](https://react.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn UI](https://ui.shadcn.com/)
-- [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
-- [Gemini AI API](https://ai.google.dev/gemini-api)
-- [Firebase](https://firebase.google.com/)
 
 ## ✨ Features
 
@@ -47,6 +56,28 @@ Bon Voyage is a modern, intelligent travel planning application that uses Gemini
 - **Attraction Details**: Places to visit with descriptions, pricing, and timing
 - **Daily Itineraries**: Hour-by-hour breakdown of activities
 - **Geographic Data**: Coordinates and addresses for easy navigation
+
+
+## 🎯 Usage
+
+### Creating a Trip
+
+1. **Start Planning**: Click "Get Started, It's Free" on the landing page
+2. **Select Destination**: Use the Google Places search to find your destination
+3. **Choose Duration**: Enter the number of days for your trip
+4. **Set Budget**: Select from Cheap, Modest, or Luxury options
+5. **Specify Travelers**: Choose your travel group (Solo, Couple, Family, Friends)
+6. **Generate Plan**: Click "Generate Travel Plan" and wait for AI processing
+7. **View Results**: Get a comprehensive itinerary with hotels and attractions
+
+### Managing Trips
+
+- **View All Trips**: Access your saved trips from the "My Trips" page
+- **Trip Details**: Click on any trip to view the full itinerary
+- **Hotel Information**: Browse recommended hotels with prices and ratings
+- **Daily Plans**: See hour-by-hour activity schedules
+- **Place Details**: Get detailed information about attractions and restaurants
+
 
 ## 🚀 Getting Started
 
@@ -149,52 +180,6 @@ ai-trip-planner/
 └── vercel.json             # Vercel deployment configuration
 ```
 
-## 🛠️ Technologies Used
-
-### Frontend
-- **React 18.3.1** - Modern React with hooks and functional components
-- **Vite 5.3.4** - Fast build tool and development server
-- **React Router DOM 6.26.1** - Client-side routing
-- **Tailwind CSS 3.4.7** - Utility-first CSS framework
-- **Lucide React 0.424.0** - Beautiful icon library
-
-### Backend & Services
-- **Firebase 10.13.0** - Backend-as-a-Service for data storage
-- **Firestore** - NoSQL database for trip storage
-- **Google Gemini AI** - AI model for trip generation
-- **Google Places API** - Location search and autocomplete
-- **Google OAuth** - User authentication
-
-### UI Components
-- **Radix UI** - Accessible, unstyled UI components
-- **Class Variance Authority** - Component variant management
-- **Sonner** - Toast notification system
-- **React Icons** - Icon library
-
-### Development Tools
-- **ESLint** - Code linting and formatting
-- **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixing
-
-## 🎯 Usage
-
-### Creating a Trip
-
-1. **Start Planning**: Click "Get Started, It's Free" on the landing page
-2. **Select Destination**: Use the Google Places search to find your destination
-3. **Choose Duration**: Enter the number of days for your trip
-4. **Set Budget**: Select from Cheap, Modest, or Luxury options
-5. **Specify Travelers**: Choose your travel group (Solo, Couple, Family, Friends)
-6. **Generate Plan**: Click "Generate Travel Plan" and wait for AI processing
-7. **View Results**: Get a comprehensive itinerary with hotels and attractions
-
-### Managing Trips
-
-- **View All Trips**: Access your saved trips from the "My Trips" page
-- **Trip Details**: Click on any trip to view the full itinerary
-- **Hotel Information**: Browse recommended hotels with prices and ratings
-- **Daily Plans**: See hour-by-hour activity schedules
-- **Place Details**: Get detailed information about attractions and restaurants
 
 ## 🔧 Configuration
 
@@ -247,22 +232,6 @@ ai-trip-planner/
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Google Gemini AI** for intelligent trip generation
-- **Google Places API** for location services
-- **Firebase** for backend infrastructure
-- **React Community** for excellent documentation and tools
-- **Tailwind CSS** for beautiful styling utilities
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/philsmirnoff/ai-trip-planner/issues) page
-2. Create a new issue with detailed information
-3. Contact the maintainers
 
 ---
 
