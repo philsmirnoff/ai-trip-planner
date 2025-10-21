@@ -204,30 +204,6 @@ ai-trip-planner/
 - Ensure the API key has access to the Gemini model
 - Monitor usage and set up billing if needed
 
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. **Connect Repository**: Link your GitHub repository to Vercel
-2. **Environment Variables**: Add all required environment variables
-3. **Deploy**: Vercel will automatically deploy on every push to main
-
-### Manual Deployment
-
-1. **Build the project**:
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy the `dist` folder** to your preferred hosting service
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 📝 License
 
